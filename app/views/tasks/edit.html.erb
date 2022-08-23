@@ -1,0 +1,9 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to quote"), task_path(@task) %>
+
+  <div class="header">
+    <h1>Edit task</h1>
+  </div>
+
+  <%= render "form", task: @task %>
+</main>

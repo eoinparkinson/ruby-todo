@@ -1,0 +1,39 @@
+<main class="flex-col">
+
+  <ul class="max-w-3xl mx-auto">
+    <% @tasks.each do |task| %>
+      <li>
+        <%= link_to task_path(task) do %>
+
+          <div class="flex flex-col space-x-4 hover:bg-blue-500 hover:text-white p-8 rounded mt-4 bg-gray-100 text-blue-500 transition ease-in-out hover:cursor-pointer">
+
+            <div class="flex flex-row justify-between">
+              <p class="font-bold"><%= task.title %></p>
+
+              <div class="flex flex-row space-x-4">
+                <%= link_to edit_task_path(task), method: :get do %>
+                  <i class="fa-solid fa-pencil"></i>
+                <% end %>
+                <%= button_to task_path(task), method: :delete do %>
+                  <i class="fa-solid fa-trash-can"></i>
+                <% end %>
+              </div>
+            </div>
+
+            <div>
+              <p><%=
+                if task.due.nil?
+                  "Timestamp not provided"
+                else
+                  task.due.strftime('%F')
+                end
+              %></p>
+            </div>
+
+          </div>
+
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</main>
